@@ -10,15 +10,14 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 
-// existing imports
-import { getContacts } from "./data";
-
 import type { LinksFunction } from "@remix-run/node";
 
-import appStyleHref from "./app.css?url";
+import { getContacts } from "./data";
+
+import appStylesHref from "./app.css?url";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: appStyleHref },
+  { rel: "stylesheet", href: appStylesHref },
 ];
 
 export const loader = async () => {
@@ -29,7 +28,7 @@ export const loader = async () => {
 export default function App() {
   const { contacts } = useLoaderData<typeof loader>();
   return (
-    <html lang="ja">
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,6 +81,7 @@ export default function App() {
         <div id="detail">
           <Outlet />
         </div>
+
         <ScrollRestoration />
         <Scripts />
       </body>
